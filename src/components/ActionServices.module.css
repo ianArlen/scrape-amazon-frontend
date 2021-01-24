@@ -73,6 +73,11 @@
     min-height: 36px;
   
   }
+  
+  .ActionServicesContainer Img{
+    width: auto;
+    max-height: 200px;
+  }
 }
 
 @media(max-width: 700px) {
