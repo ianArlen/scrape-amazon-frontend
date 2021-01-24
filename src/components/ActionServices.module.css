@@ -76,7 +76,7 @@
   
   .ActionServicesContainer Img{
     width: auto;
-    max-height: 200px;
+    max-height: 300px;
   }
 }
 
@@ -98,5 +98,9 @@
   .ItemContainer {
     width: 100%;
     margin-bottom: 20px;
+  }
+  .ActionServicesContainer Img{
+    width: auto;
+    max-height: 200px;
   }
 }
