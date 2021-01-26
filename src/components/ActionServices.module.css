@@ -8,9 +8,11 @@
   margin-right: 10%;
 }
 
+
 .ActionServicesContainer Img{
-  width: auto;
-  max-height: 200px;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
 }
 
 .ActionItemContainer {
@@ -75,8 +77,9 @@
   }
   
   .ActionServicesContainer Img{
-    width: auto;
-    max-height: 300px;
+    width: 100%;
+    max-width: 200px;
+    height: auto;
   }
 }
 
@@ -100,7 +103,8 @@
     margin-bottom: 20px;
   }
   .ActionServicesContainer Img{
-    width: auto;
-    max-height: 200px;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
   }
 }

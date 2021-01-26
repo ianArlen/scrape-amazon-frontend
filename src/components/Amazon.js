@@ -3,6 +3,7 @@ import Navbar from "./Navbar"
 import { Typography } from "@material-ui/core"
 import style from './ActionServices.module.css'
 import axios from "axios";
+import { Style } from '@material-ui/icons';
 
 const ActionItem = ({
     image, 
@@ -14,11 +15,13 @@ const ActionItem = ({
   }) => {
     return (
       <div className={style.ActionItemContainer}>
-        <img width={"100%"} src={image} alt={altImage} />
-        <Typography style={{color: "#fff"}}>Nombre: {text1}</Typography>
-        <Typography style={{color: "#fff"}}> {text2}</Typography>
-        <Typography style={{color: "#fff"}}>Total: {text3}</Typography>
-        <Typography style={{color: "#fff"}}>Valor: {text4}</Typography>
+        <div className={style.foto} >
+            <img width={"100%"} src={image} alt={altImage} />
+        </div>
+            <Typography style={{color: "#fff"}}>Nombre: {text1}</Typography>
+            <Typography style={{color: "#fff"}}> {text2}</Typography>
+            <Typography style={{color: "#fff"}}>Total: {text3}</Typography>
+            <Typography style={{color: "#fff"}}>Valor: {text4}</Typography>
       </div>
     )
 }
