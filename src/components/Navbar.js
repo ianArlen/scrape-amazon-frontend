@@ -45,11 +45,11 @@ const menuItems = [
     {
         listIcon: <Home />,
         listText: "Home",
-        listPath: "/"
+        listPath: "/home"
     },
     {
         listIcon: <Apps />,
-        listText: "Amazon",
+        listText: "Air Quality",
         listPath: "/amazon"
     }
 ]
@@ -101,7 +101,7 @@ const Navbar = () => {
                     <IconButton onClick={toggleSlider("right", true)}>
                         <ArrowBack style={{color: "#1c62ab"}}/>
                     </IconButton>
-                    <Typography variant="h5" style={{color: "#ac8362"}}>Scraper</Typography>
+                    <Typography variant="h5" style={{color: "#ac8362"}}>Air quality</Typography>
                     <MobilRightMenuSlider 
                         anchor="right"
                         open={state.right}

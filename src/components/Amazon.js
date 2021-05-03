@@ -3,25 +3,18 @@ import Navbar from "./Navbar"
 import { Typography } from "@material-ui/core"
 import style from './ActionServices.module.css'
 import axios from "axios";
-import { Style } from '@material-ui/icons';
+
 
 const ActionItem = ({
-    image, 
-    altImage, 
     text1,
     text2,
-    text3,
-    text4
+    text3
   }) => {
     return (
       <div className={style.ActionItemContainer}>
-        <div className={style.foto} >
-            <img width={"100%"} src={image} alt={altImage} />
-        </div>
-            <Typography style={{color: "#fff"}}>Nombre: {text1}</Typography>
-            <Typography style={{color: "#fff"}}> {text2}</Typography>
-            <Typography style={{color: "#fff"}}>Total: {text3}</Typography>
-            <Typography style={{color: "#fff"}}>Valor: {text4}</Typography>
+        <Typography style={{color: "#fff"}}>Source_id: {text1}</Typography>
+        <Typography style={{color: "#fff"}}>Name: {text2}</Typography>
+        <Typography style={{color: "#fff"}}>Id: {text3}</Typography>
       </div>
     )
 }
@@ -30,10 +23,10 @@ const Amazon = () => {
     
     const getCategories = () => {
         axios
-        .get("http://localhost:3001/amazon", {
+        .get("https://api.datos.gob.mx/v1/calidadAire", {
         })
         .then((response) => {
-            setCategories(response.data);
+            setCategories(response.data.results);
 
         })
         .catch((err) => {
@@ -44,58 +37,51 @@ const Amazon = () => {
         getCategories();
     }, []);
 
+    let listCategories = categories.map((category) => {
+        let count = 0   
+        const aux = (
+            <div className="category">
+            <br/>
+            <div className={style.ActionServicesContainer} >
+            <div className={style.ItemContainer}>
+                <ActionItem 
+                    text1={category.stations[count].source_id}
+                    text2={category.stations[count].name}
+                    text3={category.stations[count].id}
+            />
+            </div>
+            <div className={style.ItemContainer}>
+                <ActionItem 
+                    text1={category.stations[count].source_id}
+                    text2={category.stations[count].name}
+                    text3={category.stations[count].id}
+                />
+            </div>
+            <div className={style.ItemContainer}>
+                <ActionItem 
+                    text1={category.stations[count].source_id}
+                    text2={category.stations[count].name}
+                    text3={category.stations[count].id}
+                />
+            </div>
+            </div>   
+        </div>
+        )
+        count++
+        return aux
+    })
     return (
         <div>
         <Navbar />
         <br/>
         <br/>
         <br/>
-        
+        <Typography style={{color: "#fff"}}>Consumo de la api: https://api.datos.gob.mx/v1/calidadAire</Typography>
             <div className="categories">
-                {categories.map((category) => (
-                <div className="category">
-                    <Typography style={{color: "#fff"}} variant="h4" align={'center'}>
-                        {category.category}
-                    </Typography>
-                    <br/>
-                    <div className={style.ActionServicesContainer} >
-                    <div className={style.ItemContainer}>
-                        <ActionItem 
-                            image={category.products[0].coverImage}
-                            altImage="Ian"
-                            text1={category.products[0].name}
-                            text2={category.products[0].author}
-                            text3={category.products[0].rating.total}
-                            ext4={category.products[0].rating.value}
-                    />
-                    </div>
-                    <div className={style.ItemContainer}>
-                        <ActionItem 
-                            image={category.products[1].coverImage}
-                            altImage="Ian"
-                            text1={category.products[1].name}
-                            text2={category.products[1].author}
-                            text3={category.products[1].rating.total}
-                            text4={category.products[1].rating.value}
-                        />
-                    </div>
-                    <div className={style.ItemContainer}>
-                        <ActionItem 
-                            image={category.products[2].coverImage}
-                            altImage="Ian"
-                            text1={category.products[2].name}
-                            text2={category.products[2].author}
-                            text3={category.products[2].rating.total}
-                            text4={category.products[2].rating.value}
-                        />
-                    </div>
-                </div>
-            </div> 
-            ))}
+            {listCategories}
             </div>
-
- 
-    </div>    
+        
+        </div>
     )
 }
 
